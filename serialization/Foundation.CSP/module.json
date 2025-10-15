@@ -9,10 +9,9 @@
       },
       {
         "name": "content",
-        "path": "/sitecore/system/Settings/CSP",
-        "allowedPushOperations": "CreateUpdateAndDelete"
+        "path": "/sitecore/content/RRA/Data/Settings/CSP",
+        "allowedPushOperations": "CreateOnly"
       }
     ]
   }
 }
-
