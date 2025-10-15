@@ -89,6 +89,13 @@ namespace Foundation.CSP.Pipelines
                 return true;
             }
 
+            // Skip when in Experience Editor or Content Editor mode (if configured)
+            var skipDuringEditing = Sitecore.Configuration.Settings.GetBoolSetting("CSP.SkipDuringEditing", true);
+            if (skipDuringEditing && IsContentEditingMode(httpContext))
+            {
+                return true;
+            }
+
             // Skip for static resources if needed
             var requestPath = httpContext.Request.Path.ToLowerInvariant();
             if (requestPath.EndsWith(".js") || 
@@ -99,6 +106,67 @@ namespace Foundation.CSP.Pipelines
                 requestPath.EndsWith(".svg") ||
                 requestPath.EndsWith(".woff") ||
                 requestPath.EndsWith(".woff2"))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Determines if the current request is in content editing mode
+        /// </summary>
+        private bool IsContentEditingMode(HttpContext httpContext)
+        {
+            if (httpContext?.Request == null)
+            {
+                return false;
+            }
+
+            // Check for Experience Editor mode
+            if (Sitecore.Context.PageMode.IsExperienceEditor || 
+                Sitecore.Context.PageMode.IsExperienceEditorEditing)
+            {
+                return true;
+            }
+
+            // Check for Preview mode
+            if (Sitecore.Context.PageMode.IsPreview)
+            {
+                return true;
+            }
+
+            // Check for Debug mode
+            if (Sitecore.Context.PageMode.IsDebugging)
+            {
+                return true;
+            }
+
+            // Check query string parameters that indicate editing mode
+            var queryString = httpContext.Request.QueryString;
+            if (queryString["sc_mode"] != null || 
+                queryString["sc_edit"] != null ||
+                queryString["sc_debug"] != null ||
+                queryString["sc_trace"] != null)
+            {
+                return true;
+            }
+
+            // Check for Experience Editor specific query parameters
+            if (queryString["sc_ee"] != null || 
+                queryString["sc_itemid"] != null ||
+                queryString["sc_lang"] != null ||
+                queryString["sc_site"] != null)
+            {
+                return true;
+            }
+
+            // Check request path for editing-related URLs
+            var requestPath = httpContext.Request.Path.ToLowerInvariant();
+            if (requestPath.Contains("/sitecore/") ||
+                requestPath.Contains("/-/speak/") ||
+                requestPath.Contains("/~/media/") ||
+                requestPath.Contains("/-/media/"))
             {
                 return true;
             }

@@ -99,16 +99,35 @@ In `Foundation.CSP.config`, you can customize:
 
 ```xml
 <!-- Path to the CSP settings item -->
-<setting name="CSP.SettingsPath" value="/sitecore/system/Settings/CSP" />
+<setting name="CSP.SettingsPath" value="/sitecore/content/RRA/Data/Settings/CSP" />
 
 <!-- Database to use (master for draft, web for published) -->
 <setting name="CSP.Database" value="master" />
+
+<!-- Skip CSP injection during content editing (default: true) -->
+<setting name="CSP.SkipDuringEditing" value="true" />
 ```
 
 ### Database Selection
 
 - **`master`**: Use draft settings (for testing/development)
 - **`web`**: Use published settings (for production)
+
+### Content Editing Protection
+
+By default, CSP headers are **automatically disabled** during content editing to prevent interference with Sitecore's editing interfaces:
+
+**Automatically Skipped Scenarios:**
+- Experience Editor mode
+- Preview mode  
+- Debug mode
+- Content Editor backend requests
+- Sitecore admin/shell sites
+- Static resources (.js, .css, images, fonts)
+
+**Configuration:**
+- Set `CSP.SkipDuringEditing` to `false` to disable this protection
+- **Recommended:** Keep as `true` (default) for content author experience
 
 ## Usage Examples
 
