@@ -1,0 +1,32 @@
+---
+ID: "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
+Parent: "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/General/Enable Google Analytics
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Checkbox
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Enable Google Analytics
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Enable Google Analytics 4 and Google Tag Manager CSP directives. When checked, the necessary domains for Google Analytics will be automatically added to the CSP header (script-src, img-src, connect-src)."
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241015T150500Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+
