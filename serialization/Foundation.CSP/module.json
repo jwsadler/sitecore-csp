@@ -1,0 +1,17 @@
+{
+  "namespace": "Foundation.CSP",
+  "items": {
+    "includes": [
+      {
+        "name": "templates",
+        "path": "/sitecore/templates/Foundation/RRA/Metadata/CSP",
+        "allowedPushOperations": "CreateUpdateAndDelete"
+      },
+      {
+        "name": "content",
+        "path": "/sitecore/content/RRA/Data/Settings/CSP",
+        "allowedPushOperations": "CreateOnly"
+      }
+    ]
+  }
+}

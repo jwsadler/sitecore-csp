@@ -1,0 +1,89 @@
+---
+ID: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d"
+Parent: "82DA28C2-1018-4895-92B9-E3CB51B0DCDB"
+Template: "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"
+Path: /sitecore/content/RRA/Data/Settings/CSP
+DB: master
+Languages:
+- Language: en
+  Fields:
+  - ID: "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f"
+    Hint: Enabled
+    Value: 1
+  - ID: "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
+    Hint: Default Src
+    Value: "'self'"
+  - ID: "f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c"
+    Hint: Script Src
+    Value: |
+      'self'
+      'unsafe-inline'
+      'unsafe-eval'
+      https://www.googletagmanager.com
+      https://www.google-analytics.com
+  - ID: "a2b3c4d5-e6f7-4a5b-8c9d-0e1f2a3b4c5d"
+    Hint: Style Src
+    Value: |
+      'self'
+      'unsafe-inline'
+      https://fonts.googleapis.com
+  - ID: "b2c3d4e5-f6a7-4b5c-8d9e-0f1a2b3c4d5e"
+    Hint: Img Src
+    Value: |
+      'self'
+      data:
+      https:
+  - ID: "c2d3e4f5-a6b7-4c5d-8e9f-0a1b2c3d4e5f"
+    Hint: Font Src
+    Value: |
+      'self'
+      data:
+      https://fonts.gstatic.com
+  - ID: "d2e3f4a5-b6c7-4d5e-8f9a-0b1c2d3e4f5a"
+    Hint: Connect Src
+    Value: |
+      'self'
+      https://www.google-analytics.com
+  - ID: "e2f3a4b5-c6d7-4e5f-8a9b-0c1d2e3f4a5b"
+    Hint: Frame Src
+    Value: "'self'"
+  - ID: "f2a3b4c5-d6e7-4f5a-8b9c-0d1e2f3a4b5c"
+    Hint: Frame Ancestors
+    Value: "'self'"
+  - ID: "a3b4c5d6-e7f8-4a5b-8c9d-0e1f2a3b4c5d"
+    Hint: Object Src
+    Value: "'none'"
+  - ID: "b3c4d5e6-f7a8-4b5c-8d9e-0f1a2b3c4d5e"
+    Hint: Media Src
+    Value: "'self'"
+  - ID: "c3d4e5f6-a7b8-4c5d-8e9f-0a1b2c3d4e5f"
+    Hint: Worker Src
+    Value: "'self'"
+  - ID: "d3e4f5a6-b7c8-4d5e-8f9a-0b1c2d3e4f5a"
+    Hint: Manifest Src
+    Value: "'self'"
+  - ID: "e3f4a5b6-c7d8-4e5f-8a9b-0c1d2e3f4a5b"
+    Hint: Base Uri
+    Value: "'self'"
+  - ID: "f3a4b5c6-d7e8-4f5a-8b9c-0d1e2f3a4b5c"
+    Hint: Form Action
+    Value: "'self'"
+  - ID: "a4b5c6d7-e8f9-4a5b-8c9d-0e1f2a3b4c5d"
+    Hint: Child Src
+    Value: "'self'"
+  - ID: "b4c5d6e7-f8a9-4b5c-8d9e-0f1a2b3c4d5e"
+    Hint: Upgrade Insecure Requests
+    Value: 0
+  - ID: "c4d5e6f7-a8b9-4c5d-8e9f-0a1b2c3d4e5f"
+    Hint: Block All Mixed Content
+    Value: 0
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241015T120000Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
