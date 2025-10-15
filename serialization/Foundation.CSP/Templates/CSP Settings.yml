@@ -2,7 +2,7 @@
 ID: "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"
 Parent: "0437fee2-44c9-46a6-abe9-28858d9fee8c"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings
 DB: master
 SharedFields:
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
@@ -24,7 +24,7 @@ Languages:
 ID: "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e"
 Parent: "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/General
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/General
 DB: master
 Languages:
 - Language: en
@@ -38,7 +38,7 @@ Languages:
 ID: "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f"
 Parent: "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/General/Enabled
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/General/Enabled
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -62,7 +62,7 @@ Languages:
 ID: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Parent: "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives
 DB: master
 Languages:
 - Language: en
@@ -76,7 +76,7 @@ Languages:
 ID: "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Default Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Default Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -100,7 +100,7 @@ Languages:
 ID: "f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Script Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Script Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -124,7 +124,7 @@ Languages:
 ID: "a2b3c4d5-e6f7-4a5b-8c9d-0e1f2a3b4c5d"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Style Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Style Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -148,7 +148,7 @@ Languages:
 ID: "b2c3d4e5-f6a7-4b5c-8d9e-0f1a2b3c4d5e"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Img Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Img Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -172,7 +172,7 @@ Languages:
 ID: "c2d3e4f5-a6b7-4c5d-8e9f-0a1b2c3d4e5f"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Font Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Font Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -196,7 +196,7 @@ Languages:
 ID: "d2e3f4a5-b6c7-4d5e-8f9a-0b1c2d3e4f5a"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Connect Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Connect Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -220,7 +220,7 @@ Languages:
 ID: "e2f3a4b5-c6d7-4e5f-8a9b-0c1d2e3f4a5b"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Frame Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Frame Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -244,7 +244,7 @@ Languages:
 ID: "f2a3b4c5-d6e7-4f5a-8b9c-0d1e2f3a4b5c"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Frame Ancestors
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Frame Ancestors
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -268,7 +268,7 @@ Languages:
 ID: "a3b4c5d6-e7f8-4a5b-8c9d-0e1f2a3b4c5d"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Object Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Object Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -292,7 +292,7 @@ Languages:
 ID: "b3c4d5e6-f7a8-4b5c-8d9e-0f1a2b3c4d5e"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Media Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Media Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -316,7 +316,7 @@ Languages:
 ID: "c3d4e5f6-a7b8-4c5d-8e9f-0a1b2c3d4e5f"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Worker Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Worker Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -340,7 +340,7 @@ Languages:
 ID: "d3e4f5a6-b7c8-4d5e-8f9a-0b1c2d3e4f5a"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Manifest Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Manifest Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -364,7 +364,7 @@ Languages:
 ID: "e3f4a5b6-c7d8-4e5f-8a9b-0c1d2e3f4a5b"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Base Uri
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Base Uri
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -388,7 +388,7 @@ Languages:
 ID: "f3a4b5c6-d7e8-4f5a-8b9c-0d1e2f3a4b5c"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Form Action
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Form Action
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -412,7 +412,7 @@ Languages:
 ID: "a4b5c6d7-e8f9-4a5b-8c9d-0e1f2a3b4c5d"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Child Src
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Child Src
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -436,7 +436,7 @@ Languages:
 ID: "b4c5d6e7-f8a9-4b5c-8d9e-0f1a2b3c4d5e"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Upgrade Insecure Requests
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Upgrade Insecure Requests
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -460,7 +460,7 @@ Languages:
 ID: "c4d5e6f7-a8b9-4c5d-8e9f-0a1b2c3d4e5f"
 Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Block All Mixed Content
+Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/CSP Directives/Block All Mixed Content
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
