@@ -1,5 +1,5 @@
 ---
-ID: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+ID: "9a8b7c6d-5e4f-4321-9876-543210fedcba"
 Parent: "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
 Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/General/Enable Nonce
@@ -29,4 +29,3 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\admin
-

@@ -1,5 +1,5 @@
 ---
-ID: "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
+ID: "6d5c4b3a-2e1f-4098-9643-210987cbadef"
 Parent: "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
 Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/General/Google Tag Manager ID
@@ -29,4 +29,3 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\admin
-

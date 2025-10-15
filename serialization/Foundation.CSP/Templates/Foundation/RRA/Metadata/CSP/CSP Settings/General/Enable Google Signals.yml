@@ -1,5 +1,5 @@
 ---
-ID: "f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c"
+ID: "7c6b5a4d-3e2f-4109-9754-321098dcbafe"
 Parent: "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
 Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/General/Enable Google Signals
@@ -29,4 +29,3 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\admin
-

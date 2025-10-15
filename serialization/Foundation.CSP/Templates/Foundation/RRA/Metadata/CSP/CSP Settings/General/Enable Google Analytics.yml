@@ -1,5 +1,5 @@
 ---
-ID: "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
+ID: "8b7a6c5d-4e3f-4210-9865-432109edcbaf"
 Parent: "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
 Path: /sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings/General/Enable Google Analytics
@@ -29,4 +29,3 @@ Languages:
       Hint: __Created by
       Value: |
         sitecore\admin
-
