@@ -5,6 +5,7 @@ using Sitecore.Configuration;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
+using Sitecore.Text;
 
 namespace Foundation.CSP.Models
 {
@@ -21,7 +22,7 @@ namespace Foundation.CSP.Models
 
         public CspSettingsProvider()
         {
-            _settingsPath = Settings.GetSetting("CSP.SettingsPath", "/sitecore/system/Settings/CSP");
+            _settingsPath = Settings.GetSetting("CSP.SettingsPath", "/sitecore/content/RRA/Data/Settings/CSP");
             var databaseName = Settings.GetSetting("CSP.Database", "master");
             _database = Database.GetDatabase(databaseName);
         }
@@ -68,7 +69,7 @@ namespace Foundation.CSP.Models
         public CspSettings GetCspSettings()
         {
             var cacheKey = $"{CacheKeyPrefix}{_database?.Name ?? "unknown"}";
-            var cache = CacheManager.GetNamedInstance("CSP.Settings", StringUtil.ParseSizeString("10MB"));
+            var cache = CacheManager.GetNamedInstance("CSP.Settings", StringUtil.ParseSizeString("10MB"), true);
 
             // Try to get from cache
             var cachedSettings = cache.GetValue(cacheKey) as CspSettings;
@@ -138,4 +139,3 @@ namespace Foundation.CSP.Models
         }
     }
 }
-
