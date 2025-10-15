@@ -1,0 +1,483 @@
+---
+ID: "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"
+Parent: "0437fee2-44c9-46a6-abe9-28858d9fee8c"
+Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings
+DB: master
+SharedFields:
+- ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
+  Hint: __Base template
+  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241015T120000Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+---
+ID: "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e"
+Parent: "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/General
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241015T120000Z
+---
+ID: "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f"
+Parent: "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/General/Enabled
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Checkbox
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Enabled
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Enable CMS-based CSP header management. When checked, CSP headers will be generated from these settings. When unchecked, the web.config CSP header will be used (if configured)."
+---
+ID: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Parent: "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20241015T120000Z
+---
+ID: "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Default Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Default Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Serves as a fallback for other CSP fetch directives. Example: 'self' https://example.com"
+---
+ID: "f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Script Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Script Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Specifies valid sources for JavaScript. Example: 'self' 'unsafe-inline' https://cdn.example.com"
+---
+ID: "a2b3c4d5-e6f7-4a5b-8c9d-0e1f2a3b4c5d"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Style Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Style Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Specifies valid sources for stylesheets. Example: 'self' 'unsafe-inline'"
+---
+ID: "b2c3d4e5-f6a7-4b5c-8d9e-0f1a2b3c4d5e"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Img Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Img Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Specifies valid sources for images. Example: 'self' data: https:"
+---
+ID: "c2d3e4f5-a6b7-4c5d-8e9f-0a1b2c3d4e5f"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Font Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 500
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Font Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Specifies valid sources for fonts. Example: 'self' https://fonts.googleapis.com"
+---
+ID: "d2e3f4a5-b6c7-4d5e-8f9a-0b1c2d3e4f5a"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Connect Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 600
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Connect Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Specifies valid sources for XMLHttpRequest, WebSocket, and EventSource connections. Example: 'self' https://api.example.com"
+---
+ID: "e2f3a4b5-c6d7-4e5f-8a9b-0c1d2e3f4a5b"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Frame Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 700
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Frame Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Specifies valid sources for nested browsing contexts (frames, iframes). Example: 'self' https://youtube.com"
+---
+ID: "f2a3b4c5-d6e7-4f5a-8b9c-0d1e2f3a4b5c"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Frame Ancestors
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 800
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Frame Ancestors
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Specifies valid parents that may embed this page in frames. Example: 'self' or 'none' to prevent clickjacking"
+---
+ID: "a3b4c5d6-e7f8-4a5b-8c9d-0e1f2a3b4c5d"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Object Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 900
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Object Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Specifies valid sources for <object>, <embed>, and <applet> elements. Example: 'none'"
+---
+ID: "b3c4d5e6-f7a8-4b5c-8d9e-0f1a2b3c4d5e"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Media Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 1000
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Media Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Specifies valid sources for <audio> and <video> elements. Example: 'self' https://media.example.com"
+---
+ID: "c3d4e5f6-a7b8-4c5d-8e9f-0a1b2c3d4e5f"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Worker Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 1100
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Worker Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Specifies valid sources for Worker, SharedWorker, or ServiceWorker scripts. Example: 'self'"
+---
+ID: "d3e4f5a6-b7c8-4d5e-8f9a-0b1c2d3e4f5a"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Manifest Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 1200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Manifest Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Specifies valid sources for application manifest files. Example: 'self'"
+---
+ID: "e3f4a5b6-c7d8-4e5f-8a9b-0c1d2e3f4a5b"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Base Uri
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 1300
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Base Uri
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Restricts the URLs which can be used in a document's <base> element. Example: 'self'"
+---
+ID: "f3a4b5c6-d7e8-4f5a-8b9c-0d1e2f3a4b5c"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Form Action
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 1400
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Form Action
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Restricts the URLs which can be used as targets for form submissions. Example: 'self'"
+---
+ID: "a4b5c6d7-e8f9-4a5b-8c9d-0e1f2a3b4c5d"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Child Src
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Multi-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 1500
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Child Src
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Defines valid sources for web workers and nested browsing contexts. Example: 'self'"
+---
+ID: "b4c5d6e7-f8a9-4b5c-8d9e-0f1a2b3c4d5e"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Upgrade Insecure Requests
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Checkbox
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 1600
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Upgrade Insecure Requests
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Instructs browsers to upgrade HTTP requests to HTTPS. Check to enable."
+---
+ID: "c4d5e6f7-a8b9-4c5d-8e9f-0a1b2c3d4e5f"
+Parent: "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/Foundation/CSP/CSP Settings/CSP Directives/Block All Mixed Content
+DB: master
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: Checkbox
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 1700
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "19a69332-a23e-4e70-8d16-b44b38c4d16b"
+      Hint: Title
+      Value: Block All Mixed Content
+    - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+      Hint: __Long description
+      Value: "Prevents loading any resources over HTTP when the page is loaded over HTTPS. Check to enable."
+
