@@ -10,6 +10,10 @@ A Sitecore 10.1 module that enables Content Security Policy (CSP) header managem
 - ⚡ **Performance Optimized**: Built-in caching to minimize performance impact
 - 🔙 **Web.config Fallback**: Automatically falls back to web.config CSP when disabled
 - 🛡️ **Security First**: Helps protect against XSS, clickjacking, and other injection attacks
+- 🔐 **Nonce Token Support**: Cryptographically secure nonce tokens for inline scripts
+- 📊 **Google Analytics Integration**: Built-in CSP compliance for GA4, GTM, and Google Signals
+- 🧩 **Script Injection Service**: Easy nonce-aware script injection at various DOM locations
+- 🎨 **Rendering Model Integration**: Base class for automatic nonce access in components
 
 ## Supported CSP Directives
 
@@ -179,6 +183,63 @@ Frame Ancestors: 'none'
 Object Src: 'none'
 Upgrade Insecure Requests: ☑ Checked
 ```
+
+## Google Analytics & Nonce Integration
+
+### Overview
+
+The CSP module includes built-in support for Google Analytics 4, Google Tag Manager, and nonce-based script execution. This ensures CSP compliance while maintaining full Google Analytics functionality.
+
+### Quick Setup
+
+1. **Enable Nonce Support**:
+   ```xml
+   <setting name="CSP.EnableNonce" value="true" />
+   ```
+
+2. **Configure in Sitecore**:
+   - Navigate to `/sitecore/content/RRA/Data/Settings/CSP`
+   - Check "Enable Nonce" ✅
+   - Check "Enable Google Analytics" ✅
+   - Enter your "Google Tag Manager ID" (e.g., `GTM-XXXXXXX`)
+
+3. **Update Your Layout**:
+   ```csharp
+   @{
+       var cspModel = new Foundation.CSP.Models.NonceAwareRenderingModel();
+   }
+   
+   <!-- In <head> -->
+   @Html.Raw(cspModel.GetGoogleTagManagerScript())
+   
+   <!-- After <body> -->
+   @Html.Raw(cspModel.GetGoogleTagManagerNoScript())
+   ```
+
+### Nonce-Aware Components
+
+Create components that automatically include nonce tokens:
+
+```csharp
+public class MyComponentModel : NonceAwareRenderingModel
+{
+    public string GetCustomScript()
+    {
+        return CreateInlineScript("console.log('Hello with nonce!');");
+    }
+}
+```
+
+### Generated CSP Headers
+
+With Google Analytics enabled:
+```
+script-src 'self' 'nonce-abc123...' https://*.googletagmanager.com;
+img-src 'self' data: https: https://*.google-analytics.com https://*.googletagmanager.com;
+connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com;
+```
+
+📖 **[Complete Google Analytics Integration Guide →](docs/Google-Analytics-Nonce-Integration.md)**
 
 ## How It Works
 

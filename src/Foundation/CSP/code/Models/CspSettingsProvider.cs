@@ -128,7 +128,15 @@ namespace Foundation.CSP.Models
                     FormAction = item["Form Action"],
                     ChildSrc = item["Child Src"],
                     UpgradeInsecureRequests = item["Upgrade Insecure Requests"],
-                    BlockAllMixedContent = item["Block All Mixed Content"]
+                    BlockAllMixedContent = item["Block All Mixed Content"],
+                    
+                    // Google Analytics settings
+                    EnableGoogleAnalytics = MainUtil.GetBool(item["Enable Google Analytics"], false),
+                    EnableGoogleSignals = MainUtil.GetBool(item["Enable Google Signals"], false),
+                    GoogleTagManagerId = item["Google Tag Manager ID"],
+                    
+                    // Nonce settings
+                    EnableNonce = MainUtil.GetBool(item["Enable Nonce"], false)
                 };
             }
             catch (Exception ex)

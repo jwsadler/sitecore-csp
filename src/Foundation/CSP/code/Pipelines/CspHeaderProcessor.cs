@@ -1,6 +1,7 @@
 using System;
 using System.Web;
 using Foundation.CSP.Models;
+using Foundation.CSP.Services;
 using Sitecore.Diagnostics;
 using Sitecore.Pipelines.HttpRequest;
 
@@ -12,17 +13,20 @@ namespace Foundation.CSP.Pipelines
     public class CspHeaderProcessor : HttpRequestProcessor
     {
         private readonly ICspSettingsProvider _settingsProvider;
+        private readonly INonceService _nonceService;
         private const string CspHeaderName = "Content-Security-Policy";
 
         public CspHeaderProcessor()
         {
             _settingsProvider = new CspSettingsProvider();
+            _nonceService = new NonceService();
         }
 
         // Constructor for dependency injection (optional)
-        public CspHeaderProcessor(ICspSettingsProvider settingsProvider)
+        public CspHeaderProcessor(ICspSettingsProvider settingsProvider, INonceService nonceService = null)
         {
             _settingsProvider = settingsProvider ?? new CspSettingsProvider();
+            _nonceService = nonceService ?? new NonceService();
         }
 
         public override void Process(HttpRequestArgs args)
@@ -52,8 +56,8 @@ namespace Foundation.CSP.Pipelines
                     return;
                 }
 
-                // Build and inject CSP header
-                var cspHeaderValue = cspSettings.BuildCspHeader();
+                // Build and inject CSP header with nonce support
+                var cspHeaderValue = cspSettings.BuildCspHeader(_nonceService);
                 if (string.IsNullOrWhiteSpace(cspHeaderValue))
                 {
                     Log.Warn("CSP: Generated CSP header is empty.", this);
