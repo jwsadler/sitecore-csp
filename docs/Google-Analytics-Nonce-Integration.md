@@ -152,24 +152,26 @@ public class CustomService
 
 ### 5. Script Injection Service
 
-Use the script injection service directly:
+Use the nonce service with your existing script injection service:
 
 ```csharp
 public class MyController : Controller
 {
-    private readonly IScriptInjectionService _scriptService;
+    private readonly INonceService _nonceService;
     
-    public MyController(IScriptInjectionService scriptService)
+    public MyController(INonceService nonceService)
     {
-        _scriptService = scriptService;
+        _nonceService = nonceService;
     }
     
     public ActionResult Index()
     {
-        // Inject scripts at different locations
-        ViewBag.HeadScript = _scriptService.InjectHeadScript("console.log('Head');");
-        ViewBag.BodyScript = _scriptService.InjectBodyBottomScript("console.log('Body');");
-        ViewBag.ExternalScript = _scriptService.InjectExternalScript("https://example.com/script.js");
+        // Get the current nonce for use in your scripts
+        var nonce = _nonceService.GetCurrentNonce();
+        
+        // Use with your existing script injection service
+        ViewBag.HeadScript = $"<script nonce=\"{nonce}\">console.log('Head');</script>";
+        ViewBag.BodyScript = $"<script nonce=\"{nonce}\">console.log('Body');</script>";
         
         return View();
     }
@@ -241,19 +243,7 @@ public interface INonceService
 }
 ```
 
-### IScriptInjectionService
 
-```csharp
-public interface IScriptInjectionService
-{
-    string InjectHeadScript(string scriptContent, bool includeScriptTags = true);
-    string InjectBodyTopScript(string scriptContent, bool includeScriptTags = true);
-    string InjectBodyBottomScript(string scriptContent, bool includeScriptTags = true);
-    string InjectExternalScript(string scriptSrc, Dictionary<string, string> additionalAttributes = null);
-    string CreateNonceScript(string content, bool isExternal = false, Dictionary<string, string> additionalAttributes = null);
-    string GetCurrentNonce();
-}
-```
 
 ### NonceAwareRenderingModel
 
@@ -309,4 +299,3 @@ public abstract class NonceAwareRenderingModel : RenderingModel
    - Replace manual GTM code with `GetGoogleTagManagerScript()`
 
 This integration provides a secure, maintainable way to use Google Analytics with strict Content Security Policy headers in your Sitecore application.
-

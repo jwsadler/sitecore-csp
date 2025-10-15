@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Foundation.CSP.Services;
 using Sitecore.Diagnostics;
 using Sitecore.Mvc.Presentation;
@@ -13,19 +12,16 @@ namespace Foundation.CSP.Models
     public abstract class NonceAwareRenderingModel : RenderingModel
     {
         private readonly INonceService _nonceService;
-        private readonly IScriptInjectionService _scriptInjectionService;
 
         protected NonceAwareRenderingModel()
         {
             _nonceService = new NonceService();
-            _scriptInjectionService = new ScriptInjectionService(_nonceService);
         }
 
         // Constructor for dependency injection
-        protected NonceAwareRenderingModel(INonceService nonceService, IScriptInjectionService scriptInjectionService)
+        protected NonceAwareRenderingModel(INonceService nonceService)
         {
             _nonceService = nonceService ?? new NonceService();
-            _scriptInjectionService = scriptInjectionService ?? new ScriptInjectionService(_nonceService);
         }
 
         /// <summary>
@@ -48,31 +44,9 @@ namespace Foundation.CSP.Models
         }
 
         /// <summary>
-        /// Gets the script injection service for nonce-aware script creation
+        /// Gets the nonce service for generating and managing nonce tokens
         /// </summary>
-        protected IScriptInjectionService ScriptInjectionService => _scriptInjectionService;
-
-        /// <summary>
-        /// Creates a script tag with nonce attribute for inline JavaScript
-        /// </summary>
-        /// <param name="scriptContent">The JavaScript content</param>
-        /// <param name="additionalAttributes">Additional attributes for the script tag</param>
-        /// <returns>Complete script tag with nonce</returns>
-        public string CreateInlineScript(string scriptContent, Dictionary<string, string> additionalAttributes = null)
-        {
-            return _scriptInjectionService.CreateNonceScript(scriptContent, false, additionalAttributes);
-        }
-
-        /// <summary>
-        /// Creates a script tag with nonce attribute for external JavaScript
-        /// </summary>
-        /// <param name="scriptSrc">The source URL of the external script</param>
-        /// <param name="additionalAttributes">Additional attributes for the script tag</param>
-        /// <returns>Complete script tag with nonce</returns>
-        public string CreateExternalScript(string scriptSrc, Dictionary<string, string> additionalAttributes = null)
-        {
-            return _scriptInjectionService.CreateNonceScript(scriptSrc, true, additionalAttributes);
-        }
+        protected INonceService NonceService => _nonceService;
 
         /// <summary>
         /// Gets the Google Tag Manager script with nonce support (if Google Analytics is enabled)
@@ -127,33 +101,23 @@ namespace Foundation.CSP.Models
         }
 
         /// <summary>
-        /// Helper method to inject scripts at different locations with nonce support
+        /// Creates a simple script tag with nonce attribute for inline JavaScript
+        /// Use this with your existing script injection service
         /// </summary>
-        /// <param name="location">The injection location (head, body-top, body-bottom)</param>
-        /// <param name="scriptContent">The JavaScript content to inject</param>
-        /// <param name="includeScriptTags">Whether to wrap content in script tags</param>
-        /// <returns>The script HTML with nonce attribute</returns>
-        public string InjectScript(string location, string scriptContent, bool includeScriptTags = true)
+        /// <param name="scriptContent">The JavaScript content</param>
+        /// <param name="additionalAttributes">Additional attributes as key-value pairs (e.g., "type=text/javascript")</param>
+        /// <returns>Complete script tag with nonce</returns>
+        public string CreateNonceScript(string scriptContent, string additionalAttributes = null)
         {
             if (string.IsNullOrWhiteSpace(scriptContent))
             {
                 return string.Empty;
             }
 
-            switch (location?.ToLowerInvariant())
-            {
-                case "head":
-                    return _scriptInjectionService.InjectHeadScript(scriptContent, includeScriptTags);
-                case "body-top":
-                case "bodytop":
-                    return _scriptInjectionService.InjectBodyTopScript(scriptContent, includeScriptTags);
-                case "body-bottom":
-                case "bodybottom":
-                    return _scriptInjectionService.InjectBodyBottomScript(scriptContent, includeScriptTags);
-                default:
-                    Log.Warn($"NonceAwareRenderingModel: Unknown script injection location '{location}'. Using body-bottom as default.", this);
-                    return _scriptInjectionService.InjectBodyBottomScript(scriptContent, includeScriptTags);
-            }
+            var nonce = CurrentNonce;
+            var attributes = string.IsNullOrWhiteSpace(additionalAttributes) ? "" : $" {additionalAttributes}";
+            
+            return $"<script nonce=\"{nonce}\"{attributes}>{scriptContent}</script>";
         }
 
         /// <summary>
@@ -195,4 +159,3 @@ namespace Foundation.CSP.Models
         }
     }
 }
-
