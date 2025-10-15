@@ -71,7 +71,7 @@ serialization/Foundation.CSP/
 
 **Or manually create the template and item:**
 - Template ID: `{a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d}`
-- Template Path: `/sitecore/templates/Foundation/CSP/CSP Settings`
+- Template Path: `/sitecore/templates/Foundation/RRA/Metadata/CSP/CSP Settings`
 - Settings Item Path: `/sitecore/system/Settings/CSP`
 
 ### 4. Publish
@@ -366,4 +366,3 @@ This module is provided as-is for Sitecore 10.1 implementations.
 ## Support
 
 For issues or questions, refer to the `docs/` folder for additional documentation.
-
