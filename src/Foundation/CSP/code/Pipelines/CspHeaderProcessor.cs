@@ -60,7 +60,7 @@ namespace Foundation.CSP.Pipelines
                     return;
                 }
 
-                InjectCspHeader(args.Context, cspHeaderValue);
+                InjectCspHeader(HttpContext.Current, cspHeaderValue);
                 Log.Debug($"CSP: Header injected successfully - {cspHeaderValue}", this);
             }
             catch (Exception ex)
@@ -75,7 +75,8 @@ namespace Foundation.CSP.Pipelines
         /// </summary>
         private bool ShouldSkipProcessing(HttpRequestArgs args)
         {
-            if (args?.Context?.Response == null)
+            var httpContext = HttpContext.Current;
+            if (httpContext?.Response == null)
             {
                 return true;
             }
@@ -89,7 +90,7 @@ namespace Foundation.CSP.Pipelines
             }
 
             // Skip for static resources if needed
-            var requestPath = args.Context.Request.Path.ToLowerInvariant();
+            var requestPath = httpContext.Request.Path.ToLowerInvariant();
             if (requestPath.EndsWith(".js") || 
                 requestPath.EndsWith(".css") || 
                 requestPath.EndsWith(".jpg") || 
@@ -134,4 +135,3 @@ namespace Foundation.CSP.Pipelines
         }
     }
 }
-
