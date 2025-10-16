@@ -1,4 +1,7 @@
 using System;
+using Foundation.CSP.Services;
+using Glass.Mapper.Sc;
+using RRA.Foundation.DI;
 using Sitecore;
 using Sitecore.Caching;
 using Sitecore.Configuration;
@@ -10,21 +13,21 @@ using Sitecore.Text;
 namespace Foundation.CSP.Models
 {
     /// <summary>
-    /// Provides CSP settings from Sitecore with caching support
+    /// Provides CSP settings from Sitecore with Glass Mapper and caching support
     /// </summary>
+    [Service(typeof(ICspSettingsProvider), Lifetime = Lifetime.Scoped)]
     public class CspSettingsProvider : ICspSettingsProvider
     {
         private const string CacheKeyPrefix = "CSP_Settings_";
         private const int CacheExpirationMinutes = 60;
 
         private readonly string _settingsPath;
-        private readonly Database _database;
+        private readonly ISitecoreServiceFactory _sitecoreServiceFactory;
 
-        public CspSettingsProvider()
+        public CspSettingsProvider(ISitecoreServiceFactory sitecoreServiceFactory)
         {
             _settingsPath = Settings.GetSetting("CSP.SettingsPath", "/sitecore/content/RRA/Data/Settings/CSP");
-            var databaseName = Settings.GetSetting("CSP.Database", "master");
-            _database = Database.GetDatabase(databaseName);
+            _sitecoreServiceFactory = sitecoreServiceFactory ?? throw new ArgumentNullException(nameof(sitecoreServiceFactory));
         }
 
         /// <summary>
@@ -32,15 +35,16 @@ namespace Foundation.CSP.Models
         /// </summary>
         public Item GetCspSettingsItem()
         {
-            if (_database == null)
-            {
-                Log.Error("CSP: Database is not available", this);
-                return null;
-            }
-
             try
             {
-                return _database.GetItem(_settingsPath);
+                var sitecoreService = _sitecoreServiceFactory.CreateInstance();
+                if (sitecoreService == null)
+                {
+                    Log.Error("CSP: SitecoreService is not available", this);
+                    return null;
+                }
+
+                return sitecoreService.Database.GetItem(_settingsPath);
             }
             catch (Exception ex)
             {
@@ -54,86 +58,67 @@ namespace Foundation.CSP.Models
         /// </summary>
         public bool IsCspEnabled()
         {
-            var settingsItem = GetCspSettingsItem();
-            if (settingsItem == null)
+            try
             {
+                var sitecoreService = _sitecoreServiceFactory.CreateInstance();
+                if (sitecoreService == null)
+                {
+                    return false;
+                }
+
+                var settings = sitecoreService.GetItem<ICSPSettings>(_settingsPath);
+                return settings?.Enabled ?? false;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("CSP: Error checking if CSP is enabled", ex, this);
                 return false;
             }
-
-            return MainUtil.GetBool(settingsItem["Enabled"], false);
         }
 
         /// <summary>
         /// Gets the complete CSP settings model with caching
         /// </summary>
-        public CspSettings GetCspSettings()
+        public ICSPSettings GetCspSettings()
         {
-            var cacheKey = $"{CacheKeyPrefix}{_database?.Name ?? "unknown"}";
-            var cache = CacheManager.GetNamedInstance("CSP.Settings", StringUtil.ParseSizeString("10MB"), true);
-
-            // Try to get from cache
-            var cachedSettings = cache.GetValue(cacheKey) as CspSettings;
-            if (cachedSettings != null)
-            {
-                return cachedSettings;
-            }
-
-            // Retrieve from Sitecore
-            var settingsItem = GetCspSettingsItem();
-            if (settingsItem == null)
-            {
-                Log.Warn("CSP: Settings item not found. CSP headers will not be applied.", this);
-                return null;
-            }
-
-            var settings = MapItemToSettings(settingsItem);
-
-            // Cache the settings
-            if (settings != null && settings.Enabled)
-            {
-                cache.Add(cacheKey, settings, TimeSpan.FromMinutes(CacheExpirationMinutes));
-            }
-
-            return settings;
-        }
-
-        /// <summary>
-        /// Maps a Sitecore item to CSP settings model
-        /// </summary>
-        private CspSettings MapItemToSettings(Item item)
-        {
-            if (item == null)
-            {
-                return null;
-            }
-
             try
             {
-                return new CspSettings
+                var sitecoreService = _sitecoreServiceFactory.CreateInstance();
+                if (sitecoreService == null)
                 {
-                    Enabled = MainUtil.GetBool(item["Enabled"], false),
-                    DefaultSrc = item["Default Src"],
-                    ScriptSrc = item["Script Src"],
-                    StyleSrc = item["Style Src"],
-                    ImgSrc = item["Img Src"],
-                    FontSrc = item["Font Src"],
-                    ConnectSrc = item["Connect Src"],
-                    FrameSrc = item["Frame Src"],
-                    FrameAncestors = item["Frame Ancestors"],
-                    ObjectSrc = item["Object Src"],
-                    MediaSrc = item["Media Src"],
-                    WorkerSrc = item["Worker Src"],
-                    ManifestSrc = item["Manifest Src"],
-                    BaseUri = item["Base Uri"],
-                    FormAction = item["Form Action"],
-                    ChildSrc = item["Child Src"],
-                    UpgradeInsecureRequests = item["Upgrade Insecure Requests"],
-                    BlockAllMixedContent = item["Block All Mixed Content"]
-                };
+                    Log.Error("CSP: SitecoreService is not available", this);
+                    return null;
+                }
+
+                var cacheKey = $"{CacheKeyPrefix}{sitecoreService.Database?.Name ?? "unknown"}";
+                var cache = CacheManager.GetNamedInstance("CSP.Settings", StringUtil.ParseSizeString("10MB"), true);
+
+                // Try to get from cache
+                var cachedSettings = cache.GetValue(cacheKey) as ICSPSettings;
+                if (cachedSettings != null)
+                {
+                    return cachedSettings;
+                }
+
+                // Retrieve from Sitecore using Glass Mapper
+                var settings = sitecoreService.GetItem<ICSPSettings>(_settingsPath);
+                if (settings == null)
+                {
+                    Log.Warn("CSP: Settings item not found. CSP headers will not be applied.", this);
+                    return null;
+                }
+
+                // Cache the settings
+                if (settings.Enabled)
+                {
+                    cache.Add(cacheKey, settings, TimeSpan.FromMinutes(CacheExpirationMinutes));
+                }
+
+                return settings;
             }
             catch (Exception ex)
             {
-                Log.Error("CSP: Error mapping settings item to model", ex, this);
+                Log.Error("CSP: Error retrieving CSP settings", ex, this);
                 return null;
             }
         }
