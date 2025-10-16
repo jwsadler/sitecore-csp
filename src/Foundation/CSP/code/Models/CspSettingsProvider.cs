@@ -79,7 +79,7 @@ namespace Foundation.CSP.Models
         /// <summary>
         /// Gets the complete CSP settings model with caching
         /// </summary>
-        public CspSettings GetCspSettings()
+        public ICSPSettings GetCspSettings()
         {
             try
             {
@@ -94,56 +94,19 @@ namespace Foundation.CSP.Models
                 var cache = CacheManager.GetNamedInstance("CSP.Settings", StringUtil.ParseSizeString("10MB"), true);
 
                 // Try to get from cache
-                var cachedSettings = cache.GetValue(cacheKey) as CspSettings;
+                var cachedSettings = cache.GetValue(cacheKey) as ICSPSettings;
                 if (cachedSettings != null)
                 {
                     return cachedSettings;
                 }
 
                 // Retrieve from Sitecore using Glass Mapper
-                var glassSettings = sitecoreService.GetItem<ICSPSettings>(_settingsPath);
-                if (glassSettings == null)
+                var settings = sitecoreService.GetItem<ICSPSettings>(_settingsPath);
+                if (settings == null)
                 {
                     Log.Warn("CSP: Settings item not found. CSP headers will not be applied.", this);
                     return null;
                 }
-
-                // Convert Glass Mapper interface to concrete class
-                var settings = new CspSettings
-                {
-                    Enabled = glassSettings.Enabled,
-                    DefaultSrc = glassSettings.DefaultSrc,
-                    ScriptSrc = glassSettings.ScriptSrc,
-                    StyleSrc = glassSettings.StyleSrc,
-                    ImgSrc = glassSettings.ImgSrc,
-                    FontSrc = glassSettings.FontSrc,
-                    ConnectSrc = glassSettings.ConnectSrc,
-                    FrameSrc = glassSettings.FrameSrc,
-                    FrameAncestors = glassSettings.FrameAncestors,
-                    ObjectSrc = glassSettings.ObjectSrc,
-                    MediaSrc = glassSettings.MediaSrc,
-                    WorkerSrc = glassSettings.WorkerSrc,
-                    ManifestSrc = glassSettings.ManifestSrc,
-                    BaseUri = glassSettings.BaseUri,
-                    FormAction = glassSettings.FormAction,
-                    ChildSrc = glassSettings.ChildSrc,
-                    UpgradeInsecureRequests = glassSettings.UpgradeInsecureRequests,
-                    BlockAllMixedContent = glassSettings.BlockAllMixedContent,
-                    ReportUri = glassSettings.ReportUri,
-                    
-                    // Google Analytics settings
-                    EnableGoogleAnalytics = glassSettings.EnableGoogleAnalytics,
-                    EnableGoogleSignals = glassSettings.EnableGoogleSignals,
-                    GoogleTagManagerID = glassSettings.GoogleTagManagerID,
-                    
-                    // Nonce settings
-                    EnableNonce = glassSettings.EnableNonce,
-
-                    // Glass Mapper properties
-                    InnerItem = glassSettings.InnerItem,
-                    Language = glassSettings.Language,
-                    Version = glassSettings.Version
-                };
 
                 // Cache the settings
                 if (settings.Enabled)

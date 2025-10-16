@@ -2,6 +2,7 @@ using System;
 using System.Web;
 using Foundation.CSP.Models;
 using Foundation.CSP.Services;
+using RRA.Foundation.DI;
 using Sitecore.Diagnostics;
 using Sitecore.Pipelines.HttpRequest;
 
@@ -14,19 +15,22 @@ namespace Foundation.CSP.Pipelines
     {
         private readonly ICspSettingsProvider _settingsProvider;
         private readonly INonceService _nonceService;
+        private readonly ICspHeaderService _cspHeaderService;
         private const string CspHeaderName = "Content-Security-Policy";
 
         public CspHeaderProcessor()
         {
-            _settingsProvider = new CspSettingsProvider();
+            _settingsProvider = ServiceLocator.ServiceProvider.GetService(typeof(ICspSettingsProvider)) as ICspSettingsProvider ?? new CspSettingsProvider(ServiceLocator.ServiceProvider.GetService(typeof(ISitecoreServiceFactory)) as ISitecoreServiceFactory);
             _nonceService = new NonceService();
+            _cspHeaderService = ServiceLocator.ServiceProvider.GetService(typeof(ICspHeaderService)) as ICspHeaderService ?? new CspHeaderService();
         }
 
         // Constructor for dependency injection (optional)
-        public CspHeaderProcessor(ICspSettingsProvider settingsProvider, INonceService nonceService = null)
+        public CspHeaderProcessor(ICspSettingsProvider settingsProvider, INonceService nonceService = null, ICspHeaderService cspHeaderService = null)
         {
-            _settingsProvider = settingsProvider ?? new CspSettingsProvider();
+            _settingsProvider = settingsProvider ?? ServiceLocator.ServiceProvider.GetService(typeof(ICspSettingsProvider)) as ICspSettingsProvider;
             _nonceService = nonceService ?? new NonceService();
+            _cspHeaderService = cspHeaderService ?? ServiceLocator.ServiceProvider.GetService(typeof(ICspHeaderService)) as ICspHeaderService ?? new CspHeaderService();
         }
 
         public override void Process(HttpRequestArgs args)
@@ -57,7 +61,7 @@ namespace Foundation.CSP.Pipelines
                 }
 
                 // Build and inject CSP header with nonce support
-                var cspHeaderValue = cspSettings.BuildCspHeader(_nonceService);
+                var cspHeaderValue = _cspHeaderService.BuildCspHeader(cspSettings, _nonceService);
                 if (string.IsNullOrWhiteSpace(cspHeaderValue))
                 {
                     Log.Warn("CSP: Generated CSP header is empty.", this);

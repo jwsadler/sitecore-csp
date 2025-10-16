@@ -1,5 +1,6 @@
 using System;
 using Foundation.CSP.Services;
+using RRA.Foundation.DI;
 using Sitecore.Diagnostics;
 using Sitecore.Mvc.Presentation;
 
@@ -12,16 +13,22 @@ namespace Foundation.CSP.Models
     public abstract class NonceAwareRenderingModel : RenderingModel
     {
         private readonly INonceService _nonceService;
+        private readonly ICspSettingsProvider _cspSettingsProvider;
+        private readonly ICspHeaderService _cspHeaderService;
 
         protected NonceAwareRenderingModel()
         {
             _nonceService = new NonceService();
+            _cspSettingsProvider = ServiceLocator.ServiceProvider.GetService(typeof(ICspSettingsProvider)) as ICspSettingsProvider;
+            _cspHeaderService = ServiceLocator.ServiceProvider.GetService(typeof(ICspHeaderService)) as ICspHeaderService;
         }
 
         // Constructor for dependency injection
-        protected NonceAwareRenderingModel(INonceService nonceService)
+        protected NonceAwareRenderingModel(INonceService nonceService, ICspSettingsProvider cspSettingsProvider, ICspHeaderService cspHeaderService)
         {
             _nonceService = nonceService ?? new NonceService();
+            _cspSettingsProvider = cspSettingsProvider;
+            _cspHeaderService = cspHeaderService;
         }
 
         /// <summary>
@@ -56,14 +63,16 @@ namespace Foundation.CSP.Models
         {
             try
             {
-                var settingsProvider = new CspSettingsProvider();
-                var cspSettings = settingsProvider.GetCspSettings();
+                if (_cspSettingsProvider == null || _cspHeaderService == null)
+                {
+                    return string.Empty;
+                }
+
+                var cspSettings = _cspSettingsProvider.GetCspSettings();
                 
                 if (cspSettings?.EnableGoogleAnalytics == true)
                 {
-                    // Ensure the current nonce is set
-                    cspSettings.CurrentNonce = CurrentNonce;
-                    return cspSettings.GetGoogleTagManagerScript();
+                    return _cspHeaderService.GetGoogleTagManagerScript(cspSettings, CurrentNonce);
                 }
 
                 return string.Empty;
@@ -83,12 +92,16 @@ namespace Foundation.CSP.Models
         {
             try
             {
-                var settingsProvider = new CspSettingsProvider();
-                var cspSettings = settingsProvider.GetCspSettings();
+                if (_cspSettingsProvider == null || _cspHeaderService == null)
+                {
+                    return string.Empty;
+                }
+
+                var cspSettings = _cspSettingsProvider.GetCspSettings();
                 
                 if (cspSettings?.EnableGoogleAnalytics == true)
                 {
-                    return cspSettings.GetGoogleTagManagerNoScript();
+                    return _cspHeaderService.GetGoogleTagManagerNoScript(cspSettings);
                 }
 
                 return string.Empty;
@@ -128,8 +141,12 @@ namespace Foundation.CSP.Models
         {
             try
             {
-                var settingsProvider = new CspSettingsProvider();
-                var cspSettings = settingsProvider.GetCspSettings();
+                if (_cspSettingsProvider == null)
+                {
+                    return false;
+                }
+
+                var cspSettings = _cspSettingsProvider.GetCspSettings();
                 return cspSettings?.EnableNonce == true;
             }
             catch (Exception ex)
@@ -147,8 +164,12 @@ namespace Foundation.CSP.Models
         {
             try
             {
-                var settingsProvider = new CspSettingsProvider();
-                var cspSettings = settingsProvider.GetCspSettings();
+                if (_cspSettingsProvider == null)
+                {
+                    return false;
+                }
+
+                var cspSettings = _cspSettingsProvider.GetCspSettings();
                 return cspSettings?.EnableGoogleAnalytics == true;
             }
             catch (Exception ex)

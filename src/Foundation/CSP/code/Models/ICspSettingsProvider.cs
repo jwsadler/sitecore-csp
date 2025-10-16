@@ -17,7 +17,7 @@ namespace Foundation.CSP.Models
         /// Gets the complete CSP settings model
         /// </summary>
         /// <returns>The CSP settings model, or null if disabled or not found</returns>
-        CspSettings GetCspSettings();
+        ICSPSettings GetCspSettings();
 
         /// <summary>
         /// Determines if CMS-based CSP is enabled
@@ -26,4 +26,3 @@ namespace Foundation.CSP.Models
         bool IsCspEnabled();
     }
 }
-
